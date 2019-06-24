@@ -1,0 +1,66 @@
+<div class="header">
+		<div class="logo">
+				<i class="fa fa-tachometer"></i>
+				<span>TCS</span>
+			</div> 
+
+	<a  class="nav-trigger"><span></span></a>
+
+			
+		</div>
+		
+		<div class="side-nav">
+			<div class="logo">
+				<i class="fa fa-tachometer"></i>
+				<span>TCS</span>
+			</div>
+			<nav>
+				<ul>
+					<li class="active">
+						<a [routerLink] = "['/customerDashboard/customerdetails']">
+							<span><i class="fa fa-user"></i></span>
+							<span>My Profile</span>
+						</a>
+					</li>
+					<li>
+						<a  [routerLink] = "['/customerDashboard/insurancelist']"  >
+
+							<span><i class="fa fa-bank"></i></span>
+							<span>My Insurance</span>
+						</a>
+					</li>
+					<li>
+						<a [routerLink] = "['/customerDashboard/selectInsurance']">
+							<span><i class="fa fa-plus"></i></span>
+							<span>Add Insurance</span>
+						</a>
+					</li>
+					<li>
+							<a [routerLink] = "['/customerDashboard/updatecustomerdetails']">
+								<span><i class="fa fa-pencil"></i></span>
+								<span>Edit Details</span>
+							</a>
+						</li>
+						<li>
+								<a [routerLink]= "['/customerDashboard/updatePassword']">
+									<span><i class="fa fa-key"></i></span>
+									<span>Change Password</span>
+								</a>
+							</li>
+							<li>
+									<a [routerLink] = "" (click)="deactivateAccount()">
+										<span><i class="fa fa-lock"></i></span>
+										<span>Deactivate Account</span>
+									</a>
+								</li>
+
+					<li>
+						<a [routerLink] = "" (click)="logout()">
+							<span><i class="fa fa-sign-out"></i></span>
+							<span>Logout</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	

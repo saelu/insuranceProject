@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+  <app-adminator-login></app-adminator-login>
+ <!-- <h5 *ngIf="message !=null" style="color:green"> Account is :{{message}}, please refresh the page.</h5> -->
+  <div class=size>
+  <div class="table-responsive">
+<table class="table">
+  <tr>
+  
+    <th>Customer Name</th>
+    <th>Mobile No.</th>
+    <th>Status</th>
+    <th>Contact Details</th>
+    <th>Edit/Delete/Activate</th>
+    <th>Activate?Deactivate</th>
+  </tr>
+  <tr *ngFor="let customer of customerData">
+     
+      <td>{{customer.customerName}}</td>
+      <td>{{customer.mobileNo}}</td>
+      <td>{{customer.status}}</td>
+      <td>
+        
+     <!-- <button (click) = "displayContactInfo()">Contact</button> -->
+    
+     <button type="button" data-toggle="modal" data-target="#myModal" (click) = "displayContactInfo(customer.customerId)">Contact</button>
+    </td>
+
+     
+      <td><button (click)="goToCustomerDetails(customer.customerId)" style="color:blue">Edit</button> &nbsp;
+      <button type="button"  style="color:blue"  (click)="deleteCustomer(customer)">Delete</button>&nbsp;
+   
+    </td>
+    <td>
+        <div *ngIf="customer.status==='Active'">
+            <button  (click)="activateCustomerAccount(customer.customerId)" style="color:blue; width: 100px;">Deactivate</button>&nbsp; 
+      </div>
+      <div *ngIf="customer.status==='Deactivate'">
+        <button  (click)="activateCustomerAccount(customer.customerId)" style="color:blue; width: 100px;">Activate</button>&nbsp;
+    </div></td>
+   
+    
+    </tr>
+</table>
+</div>
+</div>
+<div class="modal  fade-scale" id="myModal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+    
+      <!-- Modal content-->
+      <div class="modal-content"  >
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">contact Detail</h4>
+        </div>
+        <div class="modal-body">
+          <label> <h4>Name : {{contactDetails?.customerName}} </h4> </label><br>
+          <label> <h4>Address : {{contactDetails?.customerAddress.address}} , 
+            {{contactDetails?.customerAddress.city}} ,
+            {{contactDetails?.customerAddress.state}} ,
+            {{contactDetails?.customerAddress.pinCode}} 
+          </h4> </label><br>
+          <label *ngIf="contactDetails?.phone==0"> <h4>Alternate No. :   &nbsp; &nbsp;- </h4> </label><br>
+          <label *ngIf="contactDetails?.phone!=0"> <h4>Alternate No. : {{contactDetails?.phone}} </h4> </label><br>
+          <label> <h4>Mobile No. : {{contactDetails?.mobileNo}} </h4> </label><br>
+          <label> <h4>EmailId : {{contactDetails?.emailId}} </h4> </label>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+ 
+
+  
+
+
+</body>
+</html>

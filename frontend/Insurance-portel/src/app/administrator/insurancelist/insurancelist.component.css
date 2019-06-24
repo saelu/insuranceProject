@@ -1,0 +1,31 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  .size{
+    padding-bottom: 50px;
+  }
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  .insurancebtn{
+
+    background-color: #4CAF50;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 4px 2px;
+    color: white;
+    margin-bottom: 20px;
+  }
+  .btndiv{
+    float: left;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }

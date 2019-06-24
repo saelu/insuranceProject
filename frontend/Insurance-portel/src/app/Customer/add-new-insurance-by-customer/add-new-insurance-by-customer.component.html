@@ -1,0 +1,55 @@
+<app-dashboard></app-dashboard>
+<div id="dashboard">
+  <div class="main-content">
+
+<div class = 'formsize'>
+          <form #editForm="ngForm" (ngSubmit)= " editForm.valid && addNewIsurance(editForm)"  name="editForm" novalidate>
+              <div class="container1" *ngIf="insuranceDetailsCheck" >
+        <h1>Add New Insurance</h1>
+        <p>Please fill in this form to add an new insurance.</p>
+        <hr>
+    
+       
+        <input type="hidden" placeholder="Insurance Id" name="insuranceId"  [(ngModel)]="insuranceDetails.insuranceId" readonly>
+ 
+        <label><b>Insurance Type</b></label>
+        <input type="text" placeholder="Insurance Type" name="insuranceType"  [(ngModel)]="insuranceDetails.insuranceType" readonly>
+    
+        <label ><b>Insurance Category</b></label>
+      
+        <input type="text" placeholder="Insurance Category" name="insuranceCategory"  [(ngModel)]="insuranceDetails.insuranceCategory" readonly>
+
+        <label for="coverageperiod"><b>Coverage Period (In Month)</b></label>
+        <input type="number" placeholder="Coverage Period" name="coveragePeriod"  [(ngModel)]="insuranceDetails.coveragePeriod" readonly>
+    
+        <label for="amount"><b>Amount</b></label>
+        <input type="number" placeholder="Amount" name="amount"  [(ngModel)]="insuranceDetails.amount" readonly>
+
+        <label for="amount"><b>Nominee</b></label>
+        <input type="text" placeholder="Nominee" name="nominee"  ngModel pattern="[a-zA-Z]+" required #nominee="ngModel">
+        <div style="color:red" 
+        *ngIf="nominee.errors && (nominee.dirty || editForm.submitted)">
+        <small *ngIf="nominee.errors.required"> The nominee is required </small>
+        <small *ngIf="nominee.errors.pattern"> nominee does not contain special characters and number</small>
+    </div>
+        <label for="amount"><b>Nominee Relation</b></label>
+        <input type="text" placeholder="Nominee Relation" name="nomineeRelation" ngModel  pattern="[a-zA-Z]+" required  #nomineeRelation="ngModel">
+        <div style="color:red" 
+        *ngIf="nomineeRelation.errors && (nomineeRelation.dirty || editForm.submitted)">
+        <small *ngIf="nomineeRelation.errors.required"> The nomineeRelation is required </small>
+        <small *ngIf="nomineeRelation.errors.pattern"> nomineeRelation does not contain special characters and number</small>
+    </div>
+        <hr>
+        <div class="btndiv">
+        <button type="submit" class="registerbtn">Add Inusrance</button>
+        <button type="submit" class="registerbtn1" [routerLink] = "['/customerDashboard']">Cancel</button>
+      </div>
+    </div>
+    </form>
+     
+    
+    </div>
+    </div>
+    </div>
+    
+    

@@ -1,0 +1,22 @@
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1000px;
+    overflow:hidden;
+    min-height:0px;
+ }
+
+ .container1 {
+    max-width: 750px;
+    margin: 20px auto 0 auto;
+    padding: 30px;
+    background-color: #FFF;
+    
+  }
+  .li	 {
+    padding-right: 60px;
+    
+  }

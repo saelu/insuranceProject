@@ -1,0 +1,58 @@
+<app-dashboard></app-dashboard>
+<div id="dashboard">
+    <div class="main-content">
+        <div class="jumbotron text-center" style="background:transparent !important">
+            <div *ngIf = "!insuranceList">
+
+                Sorry you don't have any insurance!
+            </div>
+            <div *ngIf="insuranceList">
+              <hr>
+                <h3>Insurance Details</h3>
+                <hr>
+                <div class="table-responsive">
+                   
+                    <table class="table">
+            
+                            <tr>
+                           
+                            <th>Insurance Type</th>
+                            <th>Insurance Category </th>
+                            <th>Coverage Period</th>
+                            <th>Amount</th>
+                            <th>Nominee</th>
+                            <th>Nominee Relation</th>
+                        </tr>
+                        <tr *ngFor="let insurance of customerDetail.customerInsurance">
+                          
+                           <td>{{insurance.insuranceType}}</td>
+                           <td>{{insurance.insuranceCategory}}</td>
+                           <td>{{insurance.coveragePeriod}}</td>
+                           <td>{{insurance.amount}}</td>
+                           <td>{{insurance.nominee}}</td>
+                           <td>{{insurance.nomineeRelation}}</td>
+                           
+                        </tr>      
+                         
+                 
+                        </table>
+            </div>
+
+
+
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        </div>
+
+    </div>
+
+
+
+
+</div>

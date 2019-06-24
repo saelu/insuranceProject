@@ -1,0 +1,10 @@
+spring.data.mongodb:
+  database: InsuranceProject # Database name.
+  uri: mongodb://13.233.88.178:27017 # Mongo database URI. Cannot be set with host, port and credentials.
+server:
+port: 8090
+
+
+
+#spring.data.mongodb.uri=mongodb://13.233.88.178:27017/InsuranceProject
+#server.port=8090

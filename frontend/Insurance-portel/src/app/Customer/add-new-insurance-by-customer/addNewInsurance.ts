@@ -1,0 +1,20 @@
+export  class CustomerInsurance{
+	  insuranceId:String;
+	  insuranceType:String;
+	  insuranceCategory:String;
+	  coveragePeriod:String;
+	  amount:String;
+	  nominee:String;
+      nomineeRelation:String;
+      constructor(insuranceId:String,insuranceType:String,insuranceCategory:String,coveragePeriod:String,
+        amount:String,nominee:String,nomineeRelation:String)
+        {
+            this.insuranceId=insuranceId;
+            this.insuranceType=insuranceType;
+            this.insuranceCategory=insuranceCategory;
+            this.coveragePeriod=coveragePeriod;
+            this.amount=amount;
+            this.nominee=nominee;
+            this.nomineeRelation=nomineeRelation;
+      }
+}

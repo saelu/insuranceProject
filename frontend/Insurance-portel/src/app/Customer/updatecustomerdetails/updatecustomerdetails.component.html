@@ -1,0 +1,136 @@
+<app-dashboard></app-dashboard>
+<div id="dashboard">
+  <div class="main-content">
+
+<div class="size" >
+
+  <div *ngIf="personalDetails">
+        <form #updateform="ngForm" (ngSubmit)="updateform.valid && onSubmit(updateform)" name="updateform" novalidate >
+   <input type="hidden" class="form-control"  name="customerId" [(ngModel)]="this.customerData.customerId" >
+    <h1>Update Details</h1>
+    <hr>
+    <label for="Customer Name"><b>Customer Name</b></label>
+    <input type="text" class="form-control" placeholder="Customer Name" name="customerName"  [(ngModel)]="this.customerData.customerName" pattern="[a-zA-Z ]+"  required #firstname="ngModel" ngModel>
+    <div style="color:red" 
+    *ngIf="firstname.errors && (firstname.dirty || updateform.submitted)">
+    <small *ngIf="firstname.errors.required"> The name is required </small>
+    <small *ngIf="firstname.errors.pattern"> Name does not contain special characters and number</small>
+   </div>
+    <label for="Occupation"><b>Occupation</b></label>
+    <input type="text" class="form-control" placeholder="Occupation" name="occupation" [(ngModel)]="this.customerData.occupation" required pattern="[a-zA-Z ]+" ngModel  #occupation="ngModel">
+    <div style="color:red" 
+    *ngIf="occupation.errors && (occupation.dirty || updateform.submitted)">
+    <small *ngIf="occupation.errors.required"> The occupation is required </small>
+    <small *ngIf="occupation.errors.pattern"> Occupation does not contain special characters and number</small>
+</div>
+    <label for="Gender"><b>Gender</b></label>
+    <input type="text" class="form-control" placeholder="Gender" name="gender" [(ngModel)]="this.customerData.gender" required ngModel readonly>
+
+    <label for="PAN"><b>PAN</b></label>
+    <input type="text" class="form-control" placeholder="PAN" name="pan" [(ngModel)]="this.customerData.pan" required ngModel readonly>
+
+    <label for="Nationality"><b>Nationality</b></label>
+    <input type="text" class="form-control" placeholder="Nationality" name="nationality" [(ngModel)]="this.customerData.nationality" required ngModel readonly>
+
+    <label for="annualincome"><b>Annual Income</b></label>
+    <input type="text" class="form-control" placeholder="Annual Income" name="annualIncome" [(ngModel)]="this.customerData.annualIncome" pattern="(0\.((0[1-9]{1})|([1-9]{1}([0-9]{1})?)))|(([1-9]+[0-9]*)(\.([0-9]{1,2}))?)"  required  #annualIncome="ngModel">
+    <div style="color:red" 
+    *ngIf="annualIncome.errors && (annualIncome.dirty || updateform.submitted)">
+    <small *ngIf="annualIncome.errors.required"> The annualIncome is required </small>
+    <small *ngIf="annualIncome.errors.pattern"> The annualIncome should be number and greater then 0 </small>
+   
+</div>
+    <label for="maritalstatus"><b>Marital Status</b></label>
+    <!-- <input type="text" placeholder="Marital Status" name="maritalStatus" [(ngModel)]="this.customerData.maritalStatus" required ngModel> -->
+    
+    <select  class="selectbox form-control" name ="maritalStatus" required  [(ngModel)]="this.customerData.maritalStatus" #maritalStatus="ngModel">
+        <option  selected disabled>Please select your  marital status</option>
+        <option>Married</option>
+        <option>Unmarried</option>
+       
+    </select>
+    <div style="color:red" 
+    *ngIf="maritalStatus.errors && (maritalStatus.dirty || updateform.submitted)">
+    <small *ngIf="maritalStatus.errors.required"> The maritalStatus is required </small>
+</div>
+
+    <label for="dateofbirth"><b>Date Of Birth</b></label>
+    <input type="date" class="form-control" placeholder="Date Of Birth" name="dob" [(ngModel)]="this.customerData.dob" required ngModel readonly>
+    <fieldset ngModelGroup="customerAddress">
+    <label for="Address"><b>Address</b></label>
+    <input type="text"  class="form-control" placeholder="Address" name="address" [(ngModel)]="this.customerData.customerAddress.address" pattern="^[^<>@~`%$]*$" required  #address="ngModel">
+    <div style="color:red" 
+    *ngIf="address.errors && (address.dirty || updateform.submitted)">
+    <small *ngIf="address.errors.required"> The address is required </small>
+    <small *ngIf="address.errors.pattern">Address does not contain special characters</small>
+
+</div>
+    <label for="Address"><b>City</b></label>
+    <input type="text" class="form-control" placeholder="Address" name="city" [(ngModel)]="this.customerData.customerAddress.city" pattern="[a-zA-Z ]+" required #city="ngModel">
+    <div style="color:red" 
+    *ngIf="city.errors && (city.dirty || updateform.submitted)">
+    <small *ngIf="city.errors.required"> The city is required </small>
+    <small *ngIf="city.errors.pattern"> City does not contain special characters and number</small>
+</div>
+    <label for="Address"><b>State</b></label>
+    <input type="text" class="form-control" placeholder="Address" name="state" [(ngModel)]="this.customerData.customerAddress.state" required pattern="[a-zA-Z ]+"  #state="ngModel">
+    <div style="color:red" 
+    *ngIf="state.errors && (state.dirty || updateform.submitted)">
+    <small *ngIf="state.errors.required"> The state is required </small>
+    <small *ngIf="state.errors.pattern"> State does not contain special characters and number</small>
+</div>
+    <label for="Address"><b>PinCode</b></label>
+    <input type="text" class="form-control" placeholder="Address" name="pinCode" [(ngModel)]="this.customerData.customerAddress.pinCode" pattern= "^[1-9][0-9]{5}$" required #pincode="ngModel">
+    <div style="color:red" 
+    *ngIf="pincode.errors && (pincode.dirty || updateform.submitted)">
+    <small *ngIf="pincode.errors.required"> The Pincode is required </small>
+    <small *ngIf="pincode.errors.pattern">Pincode should be a number and max 6 digite</small>
+
+</div>
+  </fieldset>
+
+    <label for="mobilenumber"><b>Mobile Number</b></label>
+    <input type="text" class="form-control" placeholder="Mobile Number" name="mobileNo" [(ngModel)]="this.customerData.mobileNo" pattern="^[6789]\d{9}$"  required #mobileNo="ngModel">
+    <div style="color:red" 
+    *ngIf="mobileNo.errors && (mobileNo.dirty || updateform.submitted)">
+    <small *ngIf="mobileNo.errors.required"> The mobileNo is required </small>
+    <small *ngIf="mobileNo.errors.pattern"> not a valid mobileNo </small>
+   
+</div>
+<div *ngIf="this.customerData.phone==0">
+<label for="phonenumber"><b>Alternate Number </b></label>
+    <input type="text" class="form-control" placeholder="Alternate Number" name="phone"  value="" ngModel  pattern="^[6789]\d{9}$"  #phoneNo="ngModel">
+   
+    <div style="color:red" 
+    *ngIf="phoneNo.errors && (phoneNo.dirty || updateform.submitted)">
+    
+    <small *ngIf="phoneNo.errors.pattern"> not a valid Alternate number</small>
+   
+</div>
+</div>
+<div *ngIf="this.customerData.phone!=0">
+        <label for="phonenumber"><b>Alternate Number </b></label>
+            <input type="text" class="form-control" placeholder="Alternate Number" name="phone" [(ngModel)]="this.customerData.mobileNo"    pattern="^[6789]\d{9}$"  #phoneNo="ngModel">
+           
+            <div style="color:red" 
+            *ngIf="phoneNo.errors && (phoneNo.dirty || updateform.submitted)">
+            
+            <small *ngIf="phoneNo.errors.pattern"> not a valid Alternate number</small>
+           
+        </div>
+        </div>
+
+    <label for="emailid"><b>Email Id</b></label>
+    <input type="text" class="form-control" placeholder="Email Id" name="emailId" [(ngModel)]="this.customerData.emailId" required ngModel readonly>
+    
+    <hr>
+    <div class="btndiv">
+    <button type="submit" class="registerbtn">Update</button>
+    <button  class="registerbtn1" [routerLink]="['/customerDashboard/customerdetails']" >Cancel</button>
+  </div>
+</form>
+</div>
+
+</div>
+</div>
+</div>

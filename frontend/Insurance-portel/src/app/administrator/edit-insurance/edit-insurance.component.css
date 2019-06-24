@@ -1,0 +1,20 @@
+.persondetails{
+    box-shadow:3px 3px 5px 6px #ccc;
+    padding:5px;
+    margin-left:5px;
+    margin-right:5px;
+   
+}
+
+.btn{
+    height:45px;
+    width:300px
+}
+input[type=text], input[type=password],input[type=number] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }

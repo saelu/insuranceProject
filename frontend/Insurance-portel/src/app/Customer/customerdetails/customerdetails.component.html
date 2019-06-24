@@ -1,0 +1,148 @@
+<app-dashboard></app-dashboard>
+<div id="dashboard">
+  <div class="main-content">
+    <div class="jumbotron text-center">
+        <div class="span2" >
+            <img src="/assets/images/avatar.jpg" class="img-circle">
+            </div>
+           
+            <div class="span8">
+                <div *ngIf="personalDetails">
+                <h3>{{customerDetail.customerName}}</h3>
+                <h6>Email: {{customerDetail.emailId}}</h6>
+                <h6>Occupation : {{customerDetail.occupation}}</h6>
+                
+            </div>
+          </div>
+      </div>
+      <div class="row panel panel-default"  *ngIf="personalDetails" style="margin-top:2%; margin-left: .5%; margin-right: .5%;">
+               
+            <div class="panel-body">
+                 
+                                                          
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+
+                            <div class="row">
+                               
+                                <div class="col-lg-9 col-md-9">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a data-toggle="tab" href="#Summery" class="text-success"><i class="fa fa-indent"></i> Personal Details</a></li>
+                                        <li><a data-toggle="tab" href="#Contact" class="text-success"><i class="fa fa-bookmark-o"></i> Contact Info</a></li>
+                                        <li><a data-toggle="tab" href="#Address" class="text-success"><i class="fa fa-home"></i> Address</a></li>
+                                       
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div id="Summery" class="tab-pane fade in active">
+
+                                            <div class="table-responsive panel">
+                                                <table class="table">
+                                                    <tbody>
+    
+                                                            <tr>
+                                                                <td class="text-success"><i class="fa fa-user"></i> Name</td>
+                                                                <td>{{customerDetail.customerName}}</td>
+                                                            </tr>
+                                                           
+                                                            <tr>
+                                                                <td class="text-success"><i class="fa fa-neuter"></i> Gender</td>
+                                                                <td>{{customerDetail.gender}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-success"><i class="fa fa-group"></i> Marital Status</td>
+                                                                <td>{{customerDetail.maritalStatus}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-success"><i class="fa fa-calendar"></i> Date Of Birth</td>
+                                                                <td>{{customerDetail.dob}}</td>
+                                                            </tr>
+
+                                                       
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <div id="Address" class="tab-pane fade">
+                                            <div class="table-responsive panel">
+                                                <table class="table">
+                                                    <tbody>
+                                        
+                                                            <tr>
+                                                                <td class="text-success"><i class="fa fa-home"></i> Address</td>
+                                                                <td>
+                                                                        {{customerDetail.customerAddress.address}}
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                    <td class="text-success"><i class="fa fa-home"></i> City</td>
+                                                                    <td>
+                                                                            {{customerDetail.customerAddress.city}}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td class="text-success"><i class="fa fa-home"></i> State</td>
+                                                                        <td>
+                                                                                {{customerDetail.customerAddress.state}}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                            <td class="text-success"><i class="fa fa-home"></i> Pin Code</td>
+                                                                            <td>
+                                                                                    {{customerDetail.customerAddress.pinCode}}
+                                                                            </td>
+                                                                        </tr>
+                                                            </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div id="Contact" class="tab-pane fade">
+                                            <div class="table-responsive panel">
+                                                <table class="table">
+                                                    <tbody>
+                                            
+                                                           
+                                                            <tr>
+                                                                <td class="text-success"><i class="glyphicon glyphicon-phone"></i> Mobile Number</td>
+                                                                <td>{{customerDetail.mobileNo}}</td>
+                                                            </tr>
+                                                            <tr *ngIf="customerDetail.phone==0">
+                                                                    <td class="text-success"><i class="glyphicon glyphicon-phone"></i> Alternate Number</td>
+                                                                    <td>-</td>
+                                                                </tr>
+                                                            <tr>
+                                                            <tr *ngIf="customerDetail.phone!=0">
+                                                                    <td class="text-success"><i class="glyphicon glyphicon-phone"></i> Alternate Number</td>
+                                                                    <td>{{customerDetail.phone}}</td>
+                                                                </tr>
+                                                            <tr>
+                                                                <td class="text-success"><i class="fa fa-flag"></i> Nationality</td>
+                                                                <td>{{customerDetail.nationality}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                    <td class="text-success"><i class="fa fa-credit-card"></i> Pan Card</td>
+                                                                    <td>
+                                                                            {{customerDetail.pan}}                                                                 </td>
+                                                                </tr>
+                                                           
+                                                
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+               
+                
+            </div>
+        </div>
+</div>
+</div>

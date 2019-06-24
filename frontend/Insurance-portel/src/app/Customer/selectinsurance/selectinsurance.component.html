@@ -1,0 +1,63 @@
+<app-dashboard></app-dashboard>
+<div id="dashboard">
+    <div class="main-content">
+      <hr>
+  <h2>Vehicle Insurance</h2>
+  <hr>
+<table>
+  <tr>
+    <th>Insurance Category</th>
+    <th>Coverage Period</th>
+    <th>Amount</th>
+    <th>Add</th>
+  </tr>
+  <tr *ngFor="let vehicleInsurance of vehicleInsurance">
+      <td>{{vehicleInsurance.insuranceCategory}}</td>
+      <td>{{vehicleInsurance.coveragePeriod}}</td>
+      <td>{{vehicleInsurance.amount}}</td>
+      <td><button (click)="addNewInsurance(vehicleInsurance)" style="color:blue">Add</button> &nbsp;
+    
+      </td>
+    </tr>
+    
+  </table>
+  <hr>
+    <h2>Home Insurance</h2>
+    <hr>
+    <table>
+        <tr>
+          <th>Insurance Category</th>
+          <th>Coverage Period</th>
+          <th>Amount</th>
+          <th>Add</th>
+        </tr>
+        <tr *ngFor="let homeInsurance of homeInsurance">
+            <td>{{homeInsurance.insuranceCategory}}</td>
+            <td>{{homeInsurance.coveragePeriod}}</td>
+            <td>{{homeInsurance.amount}}</td>
+            <td><button (click)="addNewInsurance(homeInsurance)" style="color:blue">Add</button> &nbsp;
+          
+            </td>
+          </tr>
+        </table>
+        <hr>
+    <h2>Life Insurance</h2>
+    <hr>
+    <table>
+        <tr>
+          <th>Insurance Category</th>
+          <th>Coverage Period</th>
+          <th>Amount</th>
+          <th>Add</th>
+        </tr>
+        <tr *ngFor="let lifeInsurance of lifeInsurance">
+            <td>{{lifeInsurance.insuranceCategory}}</td>
+            <td>{{lifeInsurance.coveragePeriod}}</td>
+            <td>{{lifeInsurance.amount}}</td>
+            <td><button (click)="addNewInsurance(lifeInsurance)" style="color:blue">Add</button> &nbsp;
+          
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
