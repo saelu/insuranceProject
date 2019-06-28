@@ -9,9 +9,10 @@ import {AddnewinsuranceComponent,CustomerlistComponent,InsurancelistComponent,
   EditcustomerComponent,EditInsuranceComponent
 } from './administrator';
 import {CustomerdetailsComponent,UpdatecustomerdetailsComponent,
-  AddNewInsuranceByCustomerComponent,SelectinsuranceComponent, 
+  AddNewInsuranceByCustomerComponent,SelectinsuranceComponent,
   CustomerDashboardComponent, InsuranceListComponent,UpdatePasswordComponent,
-  InsuranceofferComponent
+  InsuranceofferComponent,
+  HomeinsurancelistComponent
 } from './Customer'
 import { Error500Component } from './shared/error/error500/error500.component';
 
@@ -24,10 +25,11 @@ const routes: Routes = [
   {path:"homePage",component:HomepageComponent},
   {path:"error",component:ServererrorComponent},
   {path:"error500",component:Error500Component},
-  {path:'Pathnotfound',component:PathnotfoundComponent},
+  {path: 'homeinsurance',component:HomeinsurancelistComponent},
+  {path: 'Pathnotfound',component:PathnotfoundComponent},
   {path: 'adminview',canActivate:[AuthGuard],
- 
-  
+
+
 children:[
             {
               path:'',
@@ -36,7 +38,7 @@ children:[
            {
              path:'customerList',
              component:CustomerlistComponent
-            
+
            },
 
            {path:"insuranceList",
@@ -50,25 +52,25 @@ children:[
           path:"editinsurance/:insuranceId" ,
           component:EditInsuranceComponent
         },
-        
+
         {
-          path:"addnewinsurance", 
+          path:"addnewinsurance",
         component: AddnewinsuranceComponent
       },
 ]
 
 },
- 
+
  {path:'customerDashboard' ,canActivate:[AuthGuard],
- 
+
  children:[
   {  path:'',
      component:CustomerDashboardComponent
   },
   {
-    path:"customerdetails", 
+    path:"customerdetails",
     component: CustomerdetailsComponent
-  
+
   },
   {
    path:"insurancelist",
@@ -79,7 +81,7 @@ children:[
    component:UpdatecustomerdetailsComponent
   },
   {
-    path:"selectInsurance", 
+    path:"selectInsurance",
   component:SelectinsuranceComponent
 },
 {
@@ -87,7 +89,7 @@ children:[
   component:UpdatePasswordComponent
 },
 
-{path:"addNewInsuranceByCustomer/:insuranceId", 
+{path:"addNewInsuranceByCustomer/:insuranceId",
 
 component:AddNewInsuranceByCustomerComponent}
  ]
@@ -100,8 +102,8 @@ component:AddNewInsuranceByCustomerComponent}
  ];
 
 @NgModule({
- 
-  imports: [RouterModule.forRoot(routes), HttpClientModule,],
+
+  imports: [RouterModule.forRoot(routes,{useHash:true}), HttpClientModule,],
   exports: [RouterModule],
   providers: [AuthGuard]
 })

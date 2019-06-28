@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable} from 'rxjs';
 import {AdministratorService} from '../administrator/administrator.service'
 import {CustomerDetails} from '../administrator/customerlist/customerList';
-import {environment} from '../../environments/environment';
+import {environment} from '../../environments/environment.prod';
 import {CustomerInsurance} from '../Customer/add-new-insurance-by-customer/addNewInsurance';
 import{UpdatePassword} from '../Customer/update-password/updatePassword'
 @Injectable({

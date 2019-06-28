@@ -2,6 +2,7 @@
 <div id="dashboard">
   <div class="main-content">
     <div class="jumbotron text-center">
+        
         <div class="span2" >
             <img src="/assets/images/avatar.jpg" class="img-circle">
             </div>
@@ -15,6 +16,7 @@
             </div>
           </div>
       </div>
+      <label *ngIf="message !=null" style="color:green; padding-left: 20px;"> {{message}}</label>
       <div class="row panel panel-default"  *ngIf="personalDetails" style="margin-top:2%; margin-left: .5%; margin-right: .5%;">
                
             <div class="panel-body">

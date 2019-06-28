@@ -9,226 +9,267 @@
             <input [routerLink] = "['/Login']"type="submit" name="" value="Login"/><br/>
         </div>
         <form  #form="ngForm"  (ngSubmit)= "form.valid && formSubmit(form)" name="form" novalidate>
-            
+
             <div class="col-md-9 register-right">
             <div class="tab-content" id="myTabContent">
                 <div  id="home" role="tabpanel">
                     <h3 class="register-heading">Customer Regstration</h3>
-                   
+
                     <div class="row register-form">
-                        
+
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label style="color:red"> {{message}}</label>
-                           
+
                            </div>
+
                             <div class="form-group">
-                                 <label>Name:</label>  
-                                <input type="text" class="form-control"  placeholder="Name *"  name="customerName" ngModel pattern="[a-zA-Z]+" required #firstname="ngModel"/>
-                                <div style="color:red" 
-                                *ngIf="firstname.errors && (firstname.dirty || form.submitted)">
-                                <small *ngIf="firstname.errors.required"> The name is required </small>
-                                <small *ngIf="firstname.errors.pattern"> Address does not contain special characters and number</small>
+                            <mat-form-field>
+                              <input matInput placeholder="Name " name= "customerName" ngModel pattern="[a-zA-Z]+" required  #firstname="ngModel">
+                              <mat-error>
+                                <div *ngIf="firstname.errors && (firstname.dirty || form.submitted)">
+                                <small *ngIf="firstname?.errors.required"> The name is required </small>
+                                <small *ngIf="firstname?.errors.pattern"> Address does not contain special characters and number</small>
                             </div>
-                            
-                            </div>
-                            <div class="form-group">
-                              
-                                    <div class="form-group">
-                                            <label>Date of Birth:</label>  
-                                    <input type="date" class="date form-control"  id="exampleInputDOB1" placeholder="Date of Birth" name="dob" ngModel required #date="ngModel">
-                                    <div style="color:red" 
-                                    *ngIf="date.errors && (date.dirty || form.submitted)">
-                                    <small *ngIf="date.errors.required"> The date is required </small>
-                                   
-                                </div>
-                            
-                              </div>
-                             
-                            </div>
-                            
-                            <div class="form-group">
-                                    <label>Password:</label>  
-                                <input type="password" class="form-control"  placeholder="Password *" value="" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" ngModel required #password="ngModel"/>
-                                <div style="color:red" 
-                                *ngIf="password.errors && (password.dirty || form.submitted)">
-                                <small *ngIf="password.errors.required"> The Password is required </small>
-                                <small *ngIf="password.errors.pattern">Must contain at least one number and one uppercase and lowercase letter,and at least 8 or more characters</small>
+                              </mat-error>
+                            </mat-form-field>
 
                             </div>
-                            
+
+
+                         <div class="form-group">
+                                    <mat-form-field>
+                                      <input matInput [matDatepicker]="picker" placeholder="Date of Birth" ngModel name="dob" required  #date="ngModel" readonly>
+                                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                     <mat-datepicker #picker disabled="false" startView="year" [startAt]="startDate"></mat-datepicker>
+                                      <mat-error>
+                                        <div *ngIf="date.errors && (date.dirty || form.submitted)">
+                                    <small *ngIf="date?.errors.required"> Please select date of birth </small>  </div>
+                                      </mat-error>
+                                    </mat-form-field>
+                              </div>
+
+
+                            <div class="form-group">
+                            <mat-form-field>
+                              <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'"  name="password" ngModel pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required #password="ngModel">
+                              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                              </button>
+                              <mat-error>
+                                <div *ngIf="password.errors && (password.dirty || form.submitted)">
+                                <small *ngIf="password?.errors.required"> The Password is required </small>
+                                <small *ngIf="password?.errors.pattern">Must contain at least one number and one uppercase and lowercase letter,and at least 8 or more characters</small>
                             </div>
+                              </mat-error>
+                            </mat-form-field>
+                            </div>
+
                             <fieldset ngModelGroup="customerAddress">
                             <div class="form-group">
-                                    <label>Pincode:</label>  
-                                    <input type="text" class="form-control" placeholder="PinCode *" name="pinCode" pattern= "^[1-9][0-9]{5}$" required ngModel #pincode="ngModel"/>
-                                    <div style="color:red" 
-                                    *ngIf="pincode.errors && (pincode.dirty || form.submitted)">
-                                    <small *ngIf="pincode.errors.required"> The Pincode is required </small>
-                                    <small *ngIf="pincode.errors.pattern">Pincode should be a number and max 6 digite</small>
-    
+                                <mat-form-field>
+                                  <input matInput placeholder="PinCode" name= "pinCode" pattern= "^[1-9][0-9]{5}$" ngModel required #pincode="ngModel">
+                                  <mat-error>
+                                    <div *ngIf="pincode.errors && (pincode.dirty || form.submitted)">
+                                    <small *ngIf="pincode?.errors.required"> The Pincode is required </small>
+                                    <small *ngIf="pincode?.errors.pattern">Pincode should be a number and max 6 digite</small>
+
                                 </div>
+                                  </mat-error>
+                                </mat-form-field>
+
                                 </div>
+
                                 <div class="form-group">
-                                        <label>Address:</label>  
-                                        <input type="text" class="form-control" placeholder="Address *" name="address" pattern="^[^<>@~`%$]*$" required ngModel #address="ngModel"/>
-                                    
-                                        <div style="color:red" 
-                                        *ngIf="address.errors && (address.dirty || form.submitted)">
-                                        <small *ngIf="address.errors.required"> The address is required </small>
-                                        <small *ngIf="address.errors.pattern">Address does not contain special characters</small>
-        
+                                    <mat-form-field>
+                                      <input matInput placeholder="Address" name= "address" ngModel pattern="^[^<>@~`%$]*$"   required ngModel #address="ngModel">
+                                      <mat-error>
+                                        <div *ngIf="address.errors && (address.dirty || form.submitted)">
+                                        <small *ngIf="address?.errors.required"> The address is required </small>
+                                        <small *ngIf="address?.errors.pattern">Address does not contain special characters</small>
+
                                     </div>
+                                      </mat-error>
+                                    </mat-form-field>
                                     </div>
 
                                 <div class="form-group">
-                                        <label>City:</label>  
-                                        <input type="text" class="form-control" placeholder="City *" pattern="[a-zA-Z ]+" name="city" required ngModel #city="ngModel"/>
-                                        <div style="color:red" 
-                                        *ngIf="city.errors && (city.dirty || form.submitted)">
-                                        <small *ngIf="city.errors.required"> The city is required </small>
-                                        <small *ngIf="city.errors.pattern"> City does not contain special characters and number</small>
+                                    <mat-form-field>
+                                      <input matInput placeholder="City" name= "city" ngModel pattern="[a-zA-Z ]+" required #city="ngModel">
+                                      <mat-error>
+                                        <div *ngIf="city.errors && (city.dirty || form.submitted)">
+                                        <small *ngIf="city?.errors.required"> The city is required </small>
+                                        <small *ngIf="city?.errors.pattern"> City does not contain special characters and number</small>
                                     </div>
-                                   
+                                      </mat-error>
+                                    </mat-form-field>
                                     </div>
+
                                 <div class="form-group">
-                                        <label>State:</label>  
-                                        <input type="text" class="form-control" placeholder="State *" pattern="[a-zA-Z ]+" required name="state" ngModel #state="ngModel"/>
-                                    
-                                        <div style="color:red" 
-                                        *ngIf="state.errors && (state.dirty || form.submitted)">
-                                        <small *ngIf="state.errors.required"> The state is required </small>
-                                        <small *ngIf="state.errors.pattern"> State does not contain special characters and number</small>
+                                    <mat-form-field>
+                                      <input matInput placeholder="State" name= "state" ngModel pattern="[a-zA-Z ]+" required #state="ngModel">
+                                      <mat-error>
+                                        <div *ngIf="state.errors && (state.dirty || form.submitted)">
+                                        <small *ngIf="state?.errors.required"> The state is required </small>
+                                        <small *ngIf="state?.errors.pattern"> State does not contain special characters and number</small>
                                     </div>
+                                      </mat-error>
+                                    </mat-form-field>
                                     </div>
                                 </fieldset>
-                         
-                          
-                            <div class="form-group">
-                                    <label>Nationality:</label>  
-                                <select class="date form-control" name ="nationality" ngModel required #nationality="ngModel">
 
-                                    <option disabled selected>Please select your nationality</option>
-                                    <option >India</option>
-                                    <option>Greek</option>
-                                    <option>south african</option>
-                                
-                                </select>
-                                <div style="color:red" 
-                                *ngIf="nationality.errors && (nationality.dirty || form.submitted)">
-                                <small *ngIf="nationality.errors.required"> The nationality is required </small>
-                               
+
+                            <div class="form-group">
+                            <mat-form-field >
+                              <mat-select placeholder="Nationality" name ="nationality" ngModel required #nationality="ngModel">
+                                <mat-option value="India">India</mat-option>
+                                <mat-option value="Greek">Greek</mat-option>
+                                <mat-option value="south">south</mat-option>
+                              </mat-select>
+                              <mat-error>
+                                <div  *ngIf="nationality.errors && (nationality.dirty || form.submitted)">
+                                <small *ngIf="nationality?.errors.required"> The nationality is required </small>
+
                             </div>
+                              </mat-error>
+                            </mat-form-field>
                             </div>
-                           
+
                         </div>
                         <div class="col-md-6">
                               <div class="form-group">
-                                <label > </label> 
-                            
+                                <label > </label>
+
                             </div>
+
                             <div class="form-group">
-                                    <label>Annual Income:</label>  
-                                <input type="text" class="form-control" placeholder="Annual Income *" name="annualIncome" pattern="(0\.((0[1-9]{1})|([1-9]{1}([0-9]{1})?)))|(([1-9]+[0-9]*)(\.([0-9]{1,2}))?)" ngModel required  #annualIncome="ngModel"/>
-                                <div style="color:red" 
-                                *ngIf="annualIncome.errors && (annualIncome.dirty || form.submitted)">
-                                <small *ngIf="annualIncome.errors.required"> The annualIncome is required </small>
-                                <small *ngIf="annualIncome.errors.pattern"> The annualIncome should be number and greater then 0 </small>
-                               
+                            <mat-form-field>
+                              <input matInput placeholder="Annual Income" name= "annualIncome" ngModel required pattern="(0\.((0[1-9]{1})|([1-9]{1}([0-9]{1})?)))|(([1-9]+[0-9]*)(\.([0-9]{1,2}))?)" #annualIncome="ngModel">
+                              <mat-error>
+                                <div *ngIf="annualIncome.errors && (annualIncome.dirty || form.submitted)">
+                                <small *ngIf="annualIncome?.errors.required"> The annualIncome is required </small>
+                                <small *ngIf="annualIncome?.errors.pattern"> The annualIncome should be number and greater then 0 </small>
                             </div>
+                              </mat-error>
+                            </mat-form-field>
                             </div>
+
                             <div class="form-group">
-                                    <label>Mobile No:</label>  
-                                <input type="text" class="form-control" placeholder="MobileNo *" name="mobileNo" pattern="^[6789]\d{9}$" ngModel  required #mobileNo="ngModel"/>
-                                <div style="color:red" 
-                                *ngIf="mobileNo.errors && (mobileNo.dirty || form.submitted)">
-                                <small *ngIf="mobileNo.errors.required"> The mobileNo is required </small>
-                                <small *ngIf="mobileNo.errors.pattern"> not a valid mobileNo </small>
-                               
+                            <mat-form-field>
+                              <input matInput placeholder="MobileNo" name= "mobileNo" ngModel required pattern="^[6789]\d{9}$" #mobileNo="ngModel">
+                              <mat-error >
+                                <div  *ngIf="mobileNo.errors && (mobileNo.dirty || form.submitted)">
+                                <small *ngIf="mobileNo?.errors.required"> The mobileNo is required </small>
+                                <small *ngIf="mobileNo?.errors.pattern"> not a valid mobileNo </small>
                             </div>
+                              </mat-error>
+                            </mat-form-field>
                             </div>
+
                             <div class="form-group">
-                                    <label>Alternate Number:</label>  
-                                <input type="text" class="form-control" placeholder="Alternate Number" name="phone" ngModel  pattern="^[6789]\d{9}$" #phoneNo="ngModel"/>
-                                <div style="color:red" 
-                                *ngIf="phoneNo.errors && (phoneNo.dirty || form.submitted)">
-                                
-                                <small *ngIf="phoneNo.errors.pattern"> not a valid Alternate number </small>
-                               
+                            <mat-form-field>
+                              <input matInput placeholder="Alternate Number" name= "phone" ngModel  pattern="^[6789]\d{9}$" #phoneNo="ngModel">
+                              <mat-error >
+                                <div  *ngIf="phoneNo.errors && (phoneNo.dirty || form.submitted)">
+                                <small *ngIf="phoneNo?.errors.pattern"> not a valid Alternate number </small>
                             </div>
+                              </mat-error>
+                            </mat-form-field>
                             </div>
+
                             <div class="form-group">
-                                    <label>Email:</label>  
-                                <input type="email" class="form-control" placeholder="Email *" name="emailId" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" ngModel  #emailId="ngModel"/>
-                                <div style="color:red" 
-                                *ngIf="emailId.errors && (emailId.dirty || form.submitted)">
-                                <small *ngIf="emailId.errors.required"> The occupation is required </small>
-                                <small *ngIf="emailId.errors.pattern"> Not a valid email(ex: abc@gmail.com)</small>
+                            <mat-form-field>
+                              <input matInput placeholder="Email" name= "emailId" ngModel pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required  #emailId="ngModel">
+                              <mat-error >
+                                <div *ngIf="emailId.errors && (emailId.dirty || form.submitted)">
+                                <small *ngIf="emailId?.errors.required"> The email is required </small>
+                                <small *ngIf="emailId?.errors.pattern"> Not a valid email(ex: abc@gmail.com)</small>
                             </div>
-                          
+                              </mat-error>
+                            </mat-form-field>
                             </div>
+
                             <div class="form-group">
-                                    <label>Occupation:</label>  
-                                    <input type="text" class="form-control" placeholder="Occupation *" required pattern="[a-zA-Z]+" name="occupation" ngModel #occupation="ngModel"/>
-                                    <div style="color:red" 
+                                <mat-form-field>
+                                  <input matInput placeholder="Occupation" name= "occupation" ngModel required pattern="[a-zA-Z]+" #occupation="ngModel">
+                                  <mat-error>
+                                    <div style="color:red"
                                     *ngIf="occupation.errors && (occupation.dirty || form.submitted)">
-                                    <small *ngIf="occupation.errors.required"> The occupation is required </small>
-                                    <small *ngIf="occupation.errors.pattern"> Occupation does not contain special characters and number</small>
+                                    <small *ngIf="occupation?.errors.required"> The occupation is required </small>
+                                    <small *ngIf="occupation?.errors.pattern"> Occupation does not contain special characters and number</small>
                                 </div>
-                               
+                                  </mat-error>
+                                </mat-form-field>
                                 </div>
+
                                 <div class="form-group">
-                                        <label>Pan Number:</label>  
-                                    <input type="text" class="form-control" placeholder="Pan Number *" name="pan" pattern="^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$" required ngModel #pan="ngModel"/>
-                                    <div style="color:red" 
-                                    *ngIf="pan.errors && (pan.dirty || form.submitted)">
-                                    <small *ngIf="pan.errors.required"> The pan number is required </small>
-                                    <small *ngIf="pan.errors.pattern">Not a valid pan number (ex: CEQPK4956K)</small>
+                                <mat-form-field>
+                                  <input matInput placeholder="Pan Number" name= "pan" ngModel required pattern="^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$" #pan="ngModel">
+                                  <mat-error>
+                                    <div *ngIf="pan.errors && (pan.dirty || form.submitted)">
+                                    <small *ngIf="pan?.errors.required"> The pan number is required </small>
+                                    <small *ngIf="pan?.errors.pattern">Not a valid pan number (ex: CEQPK4956K)</small>
                                 </div>
-                               
+                                  </mat-error>
+                                </mat-form-field>
                                 </div>
-                            
-                            
+
+
                             <div class="form-group">
-                                    <label>Marital Status:</label>  
+                                    <!-- <label>Marital Status:</label>
                                 <select class="form-control" name ="maritalStatus" required  ngModel #maritalStatus="ngModel">
                                     <option  selected disabled>Please select your  marital status</option>
                                     <option>Married</option>
                                     <option>Unmarried</option>
-                                   
+
                                 </select>
-                                <div style="color:red" 
+                                <div style="color:red"
                                 *ngIf="maritalStatus.errors && (maritalStatus.dirty || form.submitted)">
                                 <small *ngIf="maritalStatus.errors.required"> The maritalStatus is required </small>
-                            </div>
-                            
+                            </div> -->
+                            <mat-form-field >
+                              <mat-select placeholder="Marital Status" name ="maritalStatus" ngModel required>
+                                <mat-option value="Married">Married</mat-option>
+                                <mat-option value="Unmarried">Unmarried</mat-option>
+                              </mat-select>
+                              <mat-error>
+
+                              </mat-error>
+                            </mat-form-field>
+
                             </div>
 
                             <div class="form-group">
-                                    <label>Gender:</label>  
+                                    <!-- <label>Gender:</label>
                                 <select class="form-control" name ="gender" ngModel required #gender="ngModel">
                                     <option   selected disabled >Please select your gender</option>
                                     <option >Male</option>
                                     <option >Female</option>
-                                   
+
                                 </select>
-                            
-                                <div style="color:red" 
+
+                                <div style="color:red"
                                 *ngIf="gender.errors && (gender.dirty || form.submitted)">
                                 <small *ngIf="gender.errors.required"> The gender is required </small>
+                            </div> -->
+                            <mat-form-field >
+                              <mat-select placeholder="Gender" name ="gender" ngModel required>
+                                <mat-option value="Male">Male</mat-option>
+                                <mat-option value="Female">Female</mat-option>
+                              </mat-select>
+                            </mat-form-field>
                             </div>
-                            </div>
-                           
-                            
+
+
                             <input type="submit" class="btnRegister" value="Register"/>
                         </div>
                     </div>
                 </div>
-               
+
             </div>
         </div>
         </form>
     </div>
 
 </div>
-<app-footer></app-footer>   
+<app-footer></app-footer>

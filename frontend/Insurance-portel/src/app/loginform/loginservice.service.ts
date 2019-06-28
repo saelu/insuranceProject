@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient,HttpHeaders} from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import {LoginCstomer} from './loginCustomer';
 import{CustomerDetails} from '../administrator/customerlist/customerList';
-import {environment} from '../../environments/environment';
+import {environment} from '../../environments/environment.prod';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -21,7 +21,13 @@ export class LoginserviceService {
   }
   getToken(loginCstomer:LoginCstomer){
     let getCustomerListUrl1 = `${this.url}/token`;
-  
+    let httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-cache'
+    });
+    let options=  {
+         headers:httpHeaders
+    };
     return this.http.post(getCustomerListUrl1,loginCstomer);
   }
   registerCustomer( customerDetails:CustomerDetails):Observable<String>{

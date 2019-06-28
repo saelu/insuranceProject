@@ -19,7 +19,8 @@ export class UpdatePasswordComponent implements OnInit {
   checkmessage:boolean=false;
   message:String;
   tokenId:String;
-
+  oldPassword:any
+  confirmPassword:any
   constructor(private service :CustomerService,private loginService:LoginserviceService,private router:Router) { }
 
   ngOnInit() {

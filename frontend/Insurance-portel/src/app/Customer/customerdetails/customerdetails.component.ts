@@ -23,16 +23,17 @@ export class CustomerdetailsComponent implements OnInit {
   insuranceList:boolean=false;
   checkPassword:String;
   message:String;
-  sussessMessage:String;
+  successMessage:String;
+  errorMessage:String
   checkmessage:boolean=false;
   
-
+  
   tokenId:String;
   constructor(private router:Router,private route:ActivatedRoute,private service :CustomerService,private loginService:LoginserviceService) { }
 
   ngOnInit() {
-    this.tokenId = localStorage.getItem('currentUser');
-
+    this.successMessage = this.route.snapshot.queryParams['Updatemessage'] || '/';
+     this. messageSend();
       this.service.getCutomerDetailById().subscribe((customerDetails:any)=>{ this.customerDetail = customerDetails;
                                                                                                   
         this.contactDetails=true;
@@ -42,9 +43,20 @@ export class CustomerdetailsComponent implements OnInit {
 
 
 });
-                                                                              
-   
-   
+
+  }
+  messageSend(){
+    console.log(this.successMessage)
+    if(this.successMessage ==="success"){
+      this.errorMessage =null
+      this.message = 'Details  upadded successfully !'
+      
+    }
+    else if(this.successMessage==='failure'){
+      this.message = null
+      this.errorMessage='Something went wrong please try again !';
+    }
+
   }
   checkInsuranceDetails(){
    

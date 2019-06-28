@@ -14,7 +14,7 @@ export class AddNewInsuranceByCustomerComponent implements OnInit {
  
   
   insuranceCategory:InsuranceCategory[];
-
+  message:String;
   insuranceId:String;
   insuranceDetailsCheck:boolean = false;
   insuranceDetails:CustomerInsurance;
@@ -38,10 +38,11 @@ export class AddNewInsuranceByCustomerComponent implements OnInit {
 addNewIsurance(addNewInsurance:NgForm){
   
   this.insuranceDetails = addNewInsurance.value;
+  // this.insuranceDetails  =null;
   this.service.addNewInsurance(this.insuranceDetails).subscribe( 
     data => console.log('success', data),
-    error => {error.error.text;
-     this.router.navigate(['/customerDashboard/insurancelist']);
+    error => {this.message=error.error.text;
+     this.router.navigate(['/customerDashboard/insurancelist'],{ queryParams: { Updatemessage: this.message}});
     });
 }
 }

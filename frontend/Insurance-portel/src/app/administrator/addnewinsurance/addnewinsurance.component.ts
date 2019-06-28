@@ -14,8 +14,14 @@ import { Router , ActivatedRoute, Params} from '@angular/router';
 })
 export class AddnewinsuranceComponent implements OnInit {
   selectedInsurance:InsuranceType = new InsuranceType('Home'); 
-  insuranceType:InsuranceType[]
+  insuranceType:any
   insuranceCategory:InsuranceCategory[]
+  selectInsuranceCategory:any
+  coveragePeriod:any
+  amount:any
+  type:any
+  
+
   constructor(private _dataservices:DataService, private service:AdministratorService,private router:Router) {
     this.insuranceType =this._dataservices.getInsuranceType();
    }

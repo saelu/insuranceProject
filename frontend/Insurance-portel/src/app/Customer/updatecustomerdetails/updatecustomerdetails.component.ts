@@ -22,6 +22,7 @@ export class UpdatecustomerdetailsComponent implements OnInit {
   personalDetails:boolean=false;
   tokenId:String;
   password:String;
+  message:String;
   constructor(private router:Router,private route:ActivatedRoute,private service :AdministratorService,private custService:CustomerService) { }
 
   ngOnInit() {
@@ -50,12 +51,11 @@ export class UpdatecustomerdetailsComponent implements OnInit {
     this.customerDetails=updateform.value;
     
     this.customerDetails.password=this.password
-   
-
    this.custService.updateCustomerDetails(this.customerData).subscribe(
     data => console.log("Success" ,data),
-    error =>{error.error.text;
-      this.router.navigate(['/customerDashboard/customerdetails']);
+    error =>{this.message=error.error.text;
+          
+      this.router.navigate(['/customerDashboard/customerdetails'],{ queryParams: { Updatemessage: this.message}});
     }
    );
   }

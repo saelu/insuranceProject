@@ -39,9 +39,6 @@ export class LoginformComponent implements OnInit {
                      
                       this.checkCustomer();    
                  });
-                 
-  
-
    }
 
    checkCustomer(){

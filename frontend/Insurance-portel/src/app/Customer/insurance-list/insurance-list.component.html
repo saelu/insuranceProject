@@ -9,8 +9,13 @@
             <div *ngIf="insuranceList">
               <hr>
                 <h3>Insurance Details</h3>
+               
                 <hr>
-                <div class="table-responsive">
+             
+                <label *ngIf="message !=null" style="color:green; float: left; "> {{message}}</label>
+                <label *ngIf="errorMessage !==null" style="color:red; float: left; "> {{errorMessage}}</label>
+              
+                <div class="table-responsive" style="float: left;">
                    
                     <table class="table">
             
